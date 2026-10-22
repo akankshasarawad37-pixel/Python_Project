@@ -52,6 +52,15 @@ amino_acids = []
 for codon in codons:
     amino_acids.append(codon_table[codon])
 
-# Step 5: show the result
-print("Codons:      ", " - ".join(codons))
-print("Amino acids: ", " - ".join(amino_acids))
+# Step 5: identify start and stop codon
+start_codon = "ATG"
+stop_codons = ["TAA", "TAG", "TGA"]
+
+found_starts = []
+found_stops = []
+for codon in codons:
+    if codon == start_codon:
+        found_starts.append(codon)
+    if codon in stop_codons:
+        found_stops.append(codon)
+

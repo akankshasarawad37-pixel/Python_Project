@@ -25,7 +25,8 @@ codon_table = {
 valid_bases = "ATGC"
 
 while True:
-    dna = input("Enter a DNA sequence: ")
+    raw_input = input("Enter a DNA sequence: ")
+    dna = raw_input.strip().replace(" ", "").upper()    # clean the input
     is_valid = True
 
     if len(dna) == 0:

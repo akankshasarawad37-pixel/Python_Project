@@ -44,8 +44,17 @@ while True:
 
 # Step 3: split into codons (groups of 3)
 codons = []
+incomplete_codon = ""
 for i in range(0, len(dna), 3):
-    codons.append(dna[i:i + 3])
+    chunk = dna[i:i + 3]
+    if len(chunk) == 3:
+        codons.append(chunk)
+    else:
+        incomplete_codon = chunk   # leftover 1 or 2 nucleotides
+
+# stop if there is not even one full codon
+if len(codons) == 0:
+    raise SystemExit("Error: the sequence is shorter than one codon (3 nucleotides).")
 
 # Step 4: translate each codon
 amino_acids = []

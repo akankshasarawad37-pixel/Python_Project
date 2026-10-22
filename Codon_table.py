@@ -64,3 +64,16 @@ for codon in codons:
     if codon in stop_codons:
         found_stops.append(codon)
 
+#show the results
+print("Codons:      ", " - ".join(codons))
+print("Amino acids: ", " - ".join(amino_acids))
+
+if found_starts:
+    print("Start codon: ", " - ".join(found_starts))
+else:
+    print("Start codon:  None found")
+
+if found_stops:
+    print("Stop codon:  ", " - ".join(found_stops))
+else:
+    print("Stop codon:   None found")

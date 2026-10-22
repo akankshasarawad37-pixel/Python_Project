@@ -21,6 +21,18 @@ codon_table = {
     "GGT": "Gly", "GGC": "Gly", "GGA": "Gly", "GGG": "Gly",
 }
 
+# Full names for the 3-letter amino acid codes
+amino_acid_names = {
+    "Phe": "Phenylalanine", "Leu": "Leucine", "Ile": "Isoleucine",
+    "Met": "Methionine", "Val": "Valine", "Ser": "Serine",
+    "Pro": "Proline", "Thr": "Threonine", "Ala": "Alanine",
+    "Tyr": "Tyrosine", "His": "Histidine", "Gln": "Glutamine",
+    "Asn": "Asparagine", "Lys": "Lysine", "Asp": "Aspartic acid",
+    "Glu": "Glutamic acid", "Cys": "Cysteine", "Trp": "Tryptophan",
+    "Arg": "Arginine", "Gly": "Glycine", "Stop": "Stop",
+}
+
+
 # Step 2: get the DNA sequence from the user
 valid_bases = "ATGC"
 
@@ -59,8 +71,9 @@ if len(codons) == 0:
 # Step 4: translate each codon
 amino_acids = []
 for codon in codons:
-    amino_acids.append(codon_table[codon])
-
+    short_name = codon_table[codon]                  # e.g. "Met"
+    amino_acids.append(amino_acid_names[short_name])  # e.g. "Methionine"
+    
 # Step 5: identify start and stop codon
 start_codon = "ATG"
 stop_codons = ["TAA", "TAG", "TGA"]

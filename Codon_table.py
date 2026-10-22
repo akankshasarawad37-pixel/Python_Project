@@ -1,4 +1,4 @@
-# Codon Table Generator - Draft v1
+# Codon Table Generator
 # Translates a DNA sequence into amino acids using the standard genetic code.
 
 # Step 1: dictionary of all 64 codons -> amino acids
@@ -22,7 +22,24 @@ codon_table = {
 }
 
 # Step 2: get the DNA sequence from the user
-dna = input("Enter a DNA sequence: ")
+valid_bases = "ATGC"
+
+while True:
+    dna = input("Enter a DNA sequence: ")
+    is_valid = True
+
+    if len(dna) == 0:
+        print("Error: the sequence cannot be empty.")
+        is_valid = False
+
+    for base in dna:
+        if base not in valid_bases:
+            print(f"Error: '{base}' is not a valid DNA nucleotide. Use only A, T, G, C.")
+            is_valid = False
+            break
+
+    if is_valid:
+        break
 
 # Step 3: split into codons (groups of 3)
 codons = []

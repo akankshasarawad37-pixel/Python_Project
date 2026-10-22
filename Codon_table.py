@@ -86,3 +86,6 @@ if found_stops:
     print("Stop codon:  ", " - ".join(found_stops))
 else:
     print("Stop codon:   None found")
+
+if incomplete_codon:
+    print(f"Note: incomplete codon '{incomplete_codon}' at the end was not translated.")

@@ -1,7 +1,7 @@
-# compare_tables.py
+# Compare_tables.py
 # Compares the codon table from codon_table.py with reference codon tables.
 
-from codon_table import CODON_TABLE
+from Codon_table import CODON_TABLE
 
 # One-letter amino acid codes -> 3-letter codes (used by the reference tables)
 ONE_TO_THREE = {
@@ -46,7 +46,7 @@ def build_biopython_table():
     return table
 
 
-def compare_tables(my_table, reference_table, reference_name):
+def Compare_tables(my_table, reference_table, reference_name):
     """Compare two codon dictionaries and print any differences."""
     print(f"\nComparing with: {reference_name}")
     print(f"  My table: {len(my_table)} codons | Reference: {len(reference_table)} codons")
@@ -72,23 +72,14 @@ def compare_tables(my_table, reference_table, reference_name):
 
 def main():
     # 1. NCBI standard genetic code (always available, no install needed)
-    compare_tables(CODON_TABLE, build_ncbi_table(), "NCBI standard genetic code (table 1)")
+    Compare_tables(CODON_TABLE, build_ncbi_table(), "NCBI standard genetic code (table 1)")
 
     # 2. Biopython's standard table (needs: pip install biopython)
     biopython_table = build_biopython_table()
     if biopython_table is None:
         print("\nBiopython is not installed - skipping. Install it with: pip install biopython")
     else:
-        compare_tables(CODON_TABLE, biopython_table, "Biopython standard table")
-
-    # 3. Optional: a codon table copied from a GitHub repository.
-    #    Copy the dictionary into a file named github_table.py and call it
-    #    GITHUB_TABLE (DNA codons with T, amino acids as 3-letter codes like "Phe").
-    try:
-        from github_table import GITHUB_TABLE
-        compare_tables(CODON_TABLE, GITHUB_TABLE, "GitHub repository table")
-    except ImportError:
-        print("\nNo github_table.py found - skipping the GitHub comparison.")
+        Compare_tables(CODON_TABLE, biopython_table, "Biopython standard table")
 
 
 if __name__ == "__main__":

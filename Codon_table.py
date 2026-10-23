@@ -121,3 +121,30 @@ else:
  
 if incomplete_codon:
     print(f"Note: incomplete codon '{incomplete_codon}' at the end was not translated.")
+
+# Step 7: display the full codon table as a grid
+bases = "TCAG"
+
+print()
+print("STANDARD CODON TABLE")
+print("=" * 57)
+
+header = "1st   "
+for second in bases:
+    header += f"{second:<12}"
+header += "3rd"
+print(header)
+print("-" * 57)
+
+for first in bases:
+    for third in bases:
+        if third == "T":
+            row = f"{first:<6}"      # show the first letter once per block
+        else:
+            row = " " * 6
+        for second in bases:
+            codon = first + second + third
+            row += f"{codon} {codon_table[codon]:<8}"
+        row += third
+        print(row)
+    print("-" * 57)
